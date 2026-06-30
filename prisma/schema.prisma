@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User{
+  id  Int @id @default(autoincrement())
+  email  String @unique 
+  password String
+  role String @default("User")
+
+  resetToken String?
+  resetTokenExpiry DateTime?
+}
+
+model News{
+id Int @id @default(autoincrement())
+tittle String
+slug String @unique
+category String
+excerpt String
+content String  @db.Text
+coverImage String 
+readingTime Int
+authorId      String
+author Author @relation(fields: [authorId],references: [id])
+published Boolean
+publishedAt DateTime?
+createdAt DateTime  @default(now())
+updateAt DateTime @updatedAt
+}
+
+model Author{
+  id String @id @default(cuid())
+name String
+posts News[]
+}
