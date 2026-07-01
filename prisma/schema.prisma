@@ -30,16 +30,8 @@ excerpt String
 content String  @db.Text
 coverImage String 
 readingTime Int
-authorId      String
-author Author @relation(fields: [authorId],references: [id])
 published Boolean
 publishedAt DateTime?
 createdAt DateTime  @default(now())
 updateAt DateTime @updatedAt
-}
-
-model Author{
-id String @id @default(cuid())
-name String
-posts News[]
 }
