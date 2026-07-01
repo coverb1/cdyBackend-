@@ -9,7 +9,7 @@ if (!connectionString) {
   throw new Error("DATABASE_URL is missing in .env yoo");
 }
 
-const adapter = new PrismaPg(connectionString );
+const adapter = new PrismaPg(connectionString);
 
 @Injectable()
 export class PrismaService extends PrismaClient implements OnModuleInit {

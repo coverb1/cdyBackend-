@@ -1,30 +1,38 @@
+import { ApiProperty } from "@nestjs/swagger";
 import { IsBoolean, IsNotEmpty, IsString } from "class-validator";
 
 export class CreateNewsDto {
+    @ApiProperty()
   @IsNotEmpty()
   @IsString()
   tittle!: string;
 
+  @ApiProperty()
   @IsNotEmpty()
   @IsString()
   category!: string;
 
+  @ApiProperty()
   @IsNotEmpty()
   @IsString()
   excerpt!: string;
 
+  @ApiProperty()
   @IsNotEmpty()
   @IsString()
   content!: string;
 
-  @IsNotEmpty()
-  @IsString()
-  coverImage!: string;
+  // @ApiProperty()
+  // @IsNotEmpty()
+  // @IsString()
+  // coverImage!: string;
 
+@ApiProperty()
   @IsNotEmpty()
   @IsString()
   authorId!: string;
 
+  @ApiProperty()
   @IsNotEmpty()
   @IsBoolean()
   published!: boolean;

@@ -5,6 +5,7 @@ import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { NewsService } from './news/news.service';
 import { NewsModule } from './news/news.module';
+import { AuthorModule } from './author/author.module';
 
 @Module({
   imports:[
@@ -12,7 +13,8 @@ import { NewsModule } from './news/news.module';
       isGlobal:true
     }),
     AuthModule,
-    NewsModule
+    NewsModule,
+    AuthorModule
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -11,13 +11,14 @@ export class NewsService {
   ) { }
 
   //create News
-  create(createNewsDto: CreateNewsDto) {
+  create(createNewsDto: CreateNewsDto,coverImage:string) {
     const slug = slugify(createNewsDto.tittle);
     const readingTime = Math.ceil(
       createNewsDto.content.split(' ').length / 200); //How many minutes will it take someone to read this article
     return this.prisma.news.create({
       data: {
         ...createNewsDto,
+        coverImage,
         slug,
         readingTime,
         publishedAt: createNewsDto.published ? new Date() : null

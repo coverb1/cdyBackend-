@@ -39,7 +39,7 @@ updateAt DateTime @updatedAt
 }
 
 model Author{
-  id String @id @default(cuid())
+id String @id @default(cuid())
 name String
 posts News[]
 }
