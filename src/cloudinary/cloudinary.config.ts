@@ -7,13 +7,13 @@ import * as streamifier from 'streamifier';
 export class CloudinaryService {
   constructor() {
     cloudinary.config({
-      cloud_name: process.env.CLOUDINARY_NAME, // 👈 see note below
-      api_key: process.env.CLOUDINARY_API_KEY,
-      api_secret: process.env.CLOUDINARY_API_SECRET,
+      cloud_name: process.env.NEXT_CLOUD_NAME, 
+      api_key: process.env.NEXT_CLOUDINARY_API_KEY,
+      api_secret: process.env.NEXT_CLOUDINARY_SECRET,
     });
   }
 
-  uploadImage(file: Express.Multer.File): Promise<string> {
+  uploadImage(file: any): Promise<string> {
     return new Promise((resolve, reject) => {
       const uploadStream = cloudinary.uploader.upload_stream(
         { folder: 'news' },

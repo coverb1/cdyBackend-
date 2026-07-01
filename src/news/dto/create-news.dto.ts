@@ -1,5 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsBoolean, IsNotEmpty, IsString } from "class-validator";
+import { Transform } from 'class-transformer';
 
 export class CreateNewsDto {
     @ApiProperty()
@@ -34,6 +35,7 @@ export class CreateNewsDto {
 
   @ApiProperty()
   @IsNotEmpty()
+  @Transform(({value})=>value==='true'||value===true)
   @IsBoolean()
   published!: boolean;
 }
