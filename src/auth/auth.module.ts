@@ -4,11 +4,15 @@ import { AuthController } from './auth.controller';
 import { JwtModule } from '@nestjs/jwt';
 import { PrismaService } from 'src/prisma.service';
 import { MailerModule } from '@nestjs-modules/mailer';
+import { PassportModule } from '@nestjs/passport';
+import { JwtStrategy } from './jwt.strategy';
+import { authaconstants } from './auth.constants';
 
 @Module({
   imports:[
+    PassportModule,
     JwtModule.register({
-      secret:'secretKey',
+      secret:authaconstants.secrete,
       signOptions:{expiresIn:'1D'}
     }),
 
@@ -24,6 +28,6 @@ pass:'zbzu rcii nqoy yxkd'
     })
   ],
   controllers: [AuthController],
-  providers: [AuthService,PrismaService],
+  providers: [AuthService,PrismaService,JwtStrategy],
 })
 export class AuthModule {}

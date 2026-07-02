@@ -4,7 +4,7 @@ import { ExtractJwt, Strategy } from "passport-jwt";
 import { authaconstants } from "./auth.constants";
 
 @Injectable()
-export class JwtStrategy extends PassportStrategy(Strategy) {
+export class JwtStrategy extends PassportStrategy(Strategy,'jwt') {
   constructor() {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -14,7 +14,15 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
 async validate(palyload:any){
-    return{userId:palyload.sub,email:palyload.email}
+  const namePart=palyload.email.split('@')[0]
+  const lettersOnly=namePart.match(/^[a-zA-Z]+/)
+  const firstName = lettersOnly ? lettersOnly[0] : namePart;
+  const capitalized = firstName.charAt(0).toUpperCase() + firstName.slice(1);
+    return{
+      userId: palyload.sub,
+      email: palyload.email,
+      name: capitalized
+    }
 }
 
 }
