@@ -31,7 +31,6 @@ export class NewsService {
   findAll() {
     return this.prisma.news.findMany({
       where: { published: true },
-      include: { author: true },
       orderBy: { publishedAt: 'asc' }
     })
   }
@@ -40,7 +39,6 @@ export class NewsService {
   findByslug(slug: string) {
     return this.prisma.news.findUnique({
       where: { slug },
-      include: { author: true }
     })
   }
 
