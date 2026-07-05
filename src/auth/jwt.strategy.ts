@@ -24,9 +24,7 @@ async validate(palyload:any){
       name: capitalized
     }
 }
-
 }
-
 // Main job of JwtStrategy
 
 // reads token

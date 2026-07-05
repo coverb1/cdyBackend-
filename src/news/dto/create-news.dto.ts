@@ -28,10 +28,10 @@ export class CreateNewsDto {
   // @IsString()
   // coverImage!: string;
 
-@ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  authorId!: string;
+// @ApiProperty()
+//   @IsNotEmpty()
+//   @IsString()
+//   authorId!: string;
 
   @ApiProperty()
   @IsNotEmpty()

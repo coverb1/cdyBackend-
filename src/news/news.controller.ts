@@ -15,7 +15,7 @@ export class NewsController {
     private readonly cloudinaryservice:CloudinaryService
   ) {}
 
-  @Post()
+  @Post('CreateNews')
 @UseInterceptors(FileInterceptor('coverImage'))
 @ApiConsumes('multipart/form-data')
 @ApiBody({
@@ -26,7 +26,7 @@ export class NewsController {
       category: { type: 'string' },
       excerpt: { type: 'string' },
       content: { type: 'string' },
-      authorId: { type: 'string' },
+      // authorId: { type: 'string' },
       published: { type: 'boolean' },
       coverImage: { type: 'string', format: 'binary' },
     },
