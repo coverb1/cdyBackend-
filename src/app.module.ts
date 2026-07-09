@@ -5,6 +5,7 @@ import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { NewsService } from './news/news.service';
 import { NewsModule } from './news/news.module';
+import { ContentCreatorModule } from './content-creator/content-creator.module';
 
 
 @Module({
@@ -14,6 +15,7 @@ import { NewsModule } from './news/news.module';
     }),
     AuthModule,
     NewsModule,
+    ContentCreatorModule,
   ],
   controllers: [AppController],
   providers: [AppService],

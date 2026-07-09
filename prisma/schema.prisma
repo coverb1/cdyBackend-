@@ -11,27 +11,42 @@ datasource db {
   provider = "postgresql"
 }
 
-model User{
-  id  Int @id @default(autoincrement())
-  email  String @unique 
+model User {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
   password String
-  role String @default("User")
+  role     String @default("User")
 
-  resetToken String?
+  resetToken       String?
   resetTokenExpiry DateTime?
 }
 
-model News{
-id Int @id @default(autoincrement())
-tittle String
-slug String @unique
-category String
-excerpt String
-content String  @db.Text
-coverImage String 
-readingTime Int
-published Boolean
-publishedAt DateTime?
-createdAt DateTime  @default(now())
-updateAt DateTime @updatedAt
+model News {
+  id          Int       @id @default(autoincrement())
+  tittle      String
+  slug        String    @unique
+  category    String
+  excerpt     String
+  content     String    @db.Text
+  coverImage  String
+  readingTime Int
+  published   Boolean
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updateAt    DateTime  @updatedAt
+}
+
+model Creator {
+  id           Int     @id @default(autoincrement())
+  name         String
+  slug         String  @unique
+  category     String
+  profileImage String?
+  verified     Boolean @default(false)
+  instagramUsername  String?
+  instagramFollowers String? // 
+  tiktokUsername  String?
+  tiktokFollowers String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
